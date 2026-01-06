@@ -14,7 +14,7 @@ public class Main {
         myList.add(44);
         myList.add(5);
         myList.add(4);
-        System.out.println("List order");
+        System.out.println("List insertion order is 2,66,4,44,5,4");
         for (Integer i:myList) {
             System.out.println(i);
         }
