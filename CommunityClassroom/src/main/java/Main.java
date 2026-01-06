@@ -1,8 +1,5 @@
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Collections.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +9,7 @@ public class Main {
         //List interface insertion order maintained
         List<Integer> myList = new ArrayList<>();
         myList.add(2);
+        myList.add(66);
         myList.add(4);
         myList.add(44);
         myList.add(5);
@@ -22,7 +20,8 @@ public class Main {
         }
 
         // Set interface
-        Set<Integer> mySet = new HashSet<Integer>();
+        //Set<Integer> mySet = new TreeSet<Integer>();  ---> TreeSet will keep unique elements and in a Sorted order
+        Set<Integer> mySet = new HashSet<Integer>();    //---> will keep only unique elements in RANDOM order
         mySet.addAll(myList);
         System.out.println("Set order");
         for (Integer i:mySet) {
