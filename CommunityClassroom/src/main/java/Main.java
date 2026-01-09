@@ -1,5 +1,10 @@
+import java.security.SecureRandom;
 import java.util.*;
-import java.util.Collections.*;
+import java.util.stream.Collectors;
+import java.util.stream.*;
+
+
+
 
 public class Main {
     public static void main(String[] args) {
@@ -28,5 +33,27 @@ public class Main {
             System.out.println(i);
         }
 
+        // Stream api
+        // longest word in a string
+        String str = "good Morning";
+        Optional<String> resul = Stream.of(str.split(" "))
+                .max(Comparator.comparing(String::length));
+        System.out.println("longest word is "+resul);
+
+        List<Integer> myList1 = Arrays.asList(101,21,339,405,153,601);
+        Optional<Integer> secHighest = myList1.stream().sorted(Comparator.reverseOrder()).skip(1).findFirst();
+        System.out.println("second highest "+secHighest);
+        //generate OTP
+        int length=5;
+        SecureRandom secureRandom = new SecureRandom();
+        String otp;
+        otp = secureRandom.ints(length,0,10).mapToObj(i -> String.valueOf(i))
+                .collect(Collectors.joining());
+        System.out.println("OTP is "+otp);
+
+        
+
+
+        //
     }
 }
