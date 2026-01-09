@@ -51,9 +51,29 @@ public class Main {
                 .collect(Collectors.joining());
         System.out.println("OTP is "+otp);
 
-        
+        // stack overflow example in multi-threaded env.
+        //
+        Runnable task = () -> {
+            try {
+                recursiveMethod(1);
+            } catch (StackOverflowError e) {
+                System.out.println("Stck overflow error occurred");
+            }
+        };
 
+//        Thread defThread = new Thread(task,"DefaultStackThread");
+//        defThread.start();
+          // the below code shows a way to change stack size of the thread, this will postpone the Stackoverflow error
+        //   by default the tack size is of 1M byte that stores around 6k recursive method calls, changing it to 2M will have around 12k
+        // have observed(chaneg the size to 3,4,5M and monitor/note total number of calls) it to linearly expand.
+//        Thread customThread = new Thread(null, task,"CustomStackThread",1*1024*1024);
+//        customThread.start();
 
         //
+    }
+
+    private static void recursiveMethod(int i) {
+        System.out.println("Recursive method "+i);
+        recursiveMethod(i+1);
     }
 }
